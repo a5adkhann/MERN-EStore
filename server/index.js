@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv");
 
-app.listen(2000, () => {
+dotenv.config();
+
+app.listen(process.env.PORT || 2000, () => {
     console.log("Server Started");
 })

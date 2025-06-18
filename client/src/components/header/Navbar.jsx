@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
         <div className='desktop-navbar bg-[#18181B] p-3 text-white flex justify-between items-center'>
             <div className='flex gap-2'>
-              <i class="ri-webhook-line text-red-600"></i>
+              <i className="ri-webhook-line text-red-600"></i>
               <span className='font-bold'>E-Store</span>
             </div>
             <div>
@@ -14,6 +14,7 @@ const Navbar = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/categories">Categories</Link></li>
                 <li><Link to="/products">Products</Link></li>
+                <li><Link to="/dashboard">Dashboard</Link></li>
               </ul>
             </div>
             <div>

@@ -1,0 +1,41 @@
+import React from 'react'
+import { SquarePen, Trash } from 'lucide-react'
+
+const ShowCategories = () => {
+  return (
+    <>
+      <div>
+        <p className='text-2xl font-bold mb-3'>Categories</p>
+        <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Category Detail</th>
+                <th>Category Image</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <th>1</th>
+                <td>Cy Ganderton</td>
+                <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque exercitationem fugiat corrupti?</td>
+                <td>Image</td>
+                <td className='flex gap-2'>
+                  <button className="btn btn-soft btn-info btn-sm"><SquarePen /></button>
+                  <button className="btn btn-soft btn-error btn-sm"><Trash /></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default ShowCategories
