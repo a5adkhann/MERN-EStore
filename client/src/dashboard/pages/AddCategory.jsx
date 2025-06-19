@@ -4,21 +4,25 @@ import axios from 'axios'
 const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [categoryDetail, setCategoryDetail] = useState("");
-  const [categoryImage, setCategoryImage] = useState("");
-
-  const formData = FormData();
-
+  const [categoryImage, setCategoryImage] = useState(null);
+  
 
   const handleCategoryAddition = async(e) => {
 
     e.preventDefault();
 
+    const formData = new FormData();
     formData.append('categoryName', categoryName);
     formData.append('categoryDetail', categoryDetail);
     formData.append('categoryImage', categoryImage);
     try {
-      const response = axios.post("http://localhost:2000/addcategory", formData);
-      console.log(response);
+      const response = await axios.post("http://localhost:2000/addcategory", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+      console.log(response.data.popup);
     }
     catch(err){
       console.log(err);
@@ -39,7 +43,7 @@ const AddCategory = () => {
         <input type="text" className="input w-xl" value={categoryDetail} onChange={(e) => setCategoryDetail(e.target.value)}/>
 
         <label className="label">Category Image:</label>
-        <input type="file" className="file-input file-input-ghost" value={categoryImage} onChange={(e) => setCategoryImage(e.target.files[0])}/>
+        <input type="file" className="file-input file-input-ghost" onChange={(e) => setCategoryImage(e.target.files[0])}/>
 
           <button className="btn btn-neutral mt-4">Add Category</button>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Home,
@@ -8,8 +8,7 @@ import {
   Folder
 } from 'lucide-react';
 
-const Sidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
 
   return (
     <>
