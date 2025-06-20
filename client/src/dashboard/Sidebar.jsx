@@ -36,7 +36,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
             </li>
             <li>
               <Link to="addcategory" className="flex items-center gap-2 hover:text-red-600">
-                <FolderPlus size={18} /> Add Categories
+                <FolderPlus size={18} /> Add Category
               </Link>
             </li>
             <li>

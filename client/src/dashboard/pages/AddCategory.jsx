@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
@@ -16,13 +17,12 @@ const AddCategory = () => {
     formData.append('categoryDetail', categoryDetail);
     formData.append('categoryImage', categoryImage);
     try {
-      const response = await axios.post("http://localhost:2000/addcategory", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      const response = await axios.post("http://localhost:2000/addcategory", formData
     );
-      console.log(response.data.popup);
+      toast.success(response.data.popup);
+      setCategoryName("");
+      setCategoryDetail("");
+      setCategoryImage("");
     }
     catch(err){
       console.log(err);
@@ -31,7 +31,7 @@ const AddCategory = () => {
 
   return (
     <>
-    <form onSubmit={handleCategoryAddition}>
+    <form onSubmit={handleCategoryAddition} encType='multipart/form-data'>
     <div className='flex justify-center'>
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xl border p-4">
         <legend className="fieldset-legend">Add Category</legend>
@@ -50,6 +50,11 @@ const AddCategory = () => {
       </fieldset>
       </div>
       </form>
+
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     </>
   )
 }
