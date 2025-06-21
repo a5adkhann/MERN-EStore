@@ -10,11 +10,11 @@ import AddCategory from './dashboard/pages/AddCategory'
 import ShowCategories from './dashboard/pages/ShowCategories'
 import DashboardHome from './dashboard/pages/DashboardHome'
 import AppLayout from './AppLayout'
-import Toaster from 'react-hot-toast'
-
+import AOS from 'aos'
 const App = () => {
   return (
     <>
+    {AOS.init()}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppLayout />}>

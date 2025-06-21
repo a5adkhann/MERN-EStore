@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import categoriesData from '../data/CategoriesData'
+import axios from 'axios';
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -70,11 +70,28 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 const CategoriesSection = () => {
+
+   const [categories, setCategories] = useState([]);
+
+  const fetchCategories = async() => {
+    try {
+      const response = await axios.get("http://localhost:2000/getcategories");
+      setCategories(response.data);
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories();
+  }, [])
+
   return (
     <>
       <div className='categories-section'>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: "45px", flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-            {categoriesData.map((category) => (
+            {categories.map((category) => (
               <ImageButton
                 focusRipple
                 key={category.id}
@@ -82,7 +99,7 @@ const CategoriesSection = () => {
                   width: 300
                 }}
               >
-                <ImageSrc style={{ backgroundImage: `url(${category.image})` }} />
+                <ImageSrc style={{ backgroundImage: `url(http://localhost:2000/uploads/${category.category_image})` }} />
                 <ImageBackdrop className="MuiImageBackdrop-root" />
                 <Image>
                   <Typography
@@ -99,7 +116,7 @@ const CategoriesSection = () => {
                       fontFamily: "Poppins"
                     })}
                   >
-                    {category.name}
+                    {category.category_name}
                     <ImageMarked className="MuiImageMarked-root" />
                   </Typography>
                 </Image>

@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {SquarePen, Trash} from 'lucide-react'
+import axios from 'axios';
 
 const ShowProducts = () => {
+   const [products, setProducts] = useState([]);
+
+  const fetchProducts = async() => {
+    try {
+      const response = await axios.get("http://localhost:2000/getproducts");
+      setProducts(response.data);
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, [])
   return (
     <>
     <div>
@@ -20,18 +36,22 @@ const ShowProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
+            {products.map((product, index) => (
             <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam cumque veniam qui.</td>
-              <td>$20</td>
-              <td>Image</td>
-              <td className='flex gap-2'>
+              <th>{index+1}</th>
+              <td>{product.product_name}</td>
+              <td>{product.product_detail}</td>
+              <td>{product.product_price}</td>
+              <td>
+                <img src={`http://localhost:2000/uploads/${product.product_image}`} width={70} />
+                </td>
+              <td className='flex gap-2 mt-6'>
                 <button className="btn btn-soft btn-info btn-sm"><SquarePen /></button>
                 <button className="btn btn-soft btn-error btn-sm"><Trash /></button>
               </td>
             </tr>
+            ))}
+
           </tbody>
         </table>
       </div>

@@ -70,6 +70,17 @@ app.post("/addproduct", upload.single("productImage"), async (request, response)
   }
 });
 
+app.get("/getproducts", async(request, response) => {
+  try {
+    const products = await Products.find();
+    response.status(200).send(products);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
+
 app.listen(2000, () => {
   console.log("Server running on port 2000");
 });

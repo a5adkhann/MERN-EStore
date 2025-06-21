@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <>
-        <div className='desktop-navbar bg-[#18181B] p-3 text-white flex justify-between items-center'>
+        <div className='desktop-navbar bg-[#18181B] p-5 text-white flex justify-between items-center'>
             <div className='flex gap-2'>
               <i className="ri-webhook-line text-red-600"></i>
-              <span className='font-bold'>E-Store</span>
+              <span className='font-bold'>
+                <img src="./logo.png" className='invert'/>
+              </span>
             </div>
             <div>
               <ul className='flex gap-10'>
