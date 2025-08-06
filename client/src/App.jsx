@@ -16,6 +16,7 @@ import CategoryDetail from './pages/CategoryDetail'
 import ProductDetail from './pages/ProductDetail'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Cart from './pages/Cart'
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
               <Route path="/categories/:categoryId" element={<CategoryDetail />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:productId" element={<ProductDetail />} />
+              <Route path="/cart" element={<Cart />} />
             </Route>
             <Route path="/dashboard" element={<DashboardLayout />}>
               <Route index element={<DashboardHome />} />

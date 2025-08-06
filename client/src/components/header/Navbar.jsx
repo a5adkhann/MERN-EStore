@@ -1,14 +1,15 @@
 import { ShoppingCart, Menu } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoHomeOutline } from "react-icons/io5";
 import { MdCategory } from "react-icons/md";
 import { CgProductHunt } from "react-icons/cg";
 import { RiDashboard3Line } from "react-icons/ri";
+import { cartContext } from '../CartContext';
 
 const Navbar = () => {
 
-  const [cartCount, setCartCount] = useState(JSON.parse(localStorage.getItem("cart")) || 0);
+  const {cart} = useContext(cartContext);
 
   return (
     <>
@@ -27,10 +28,10 @@ const Navbar = () => {
                 <li className='group'><Link className='flex items-center group-hover:text-red-300 group-hover:-translate-y-1 transition-all duration-300 ease-in-out gap-2 text-sm' to="/dashboard"><RiDashboard3Line className='group-hover:text-white text-red-300 text-lg'/>Dashboard</Link></li>
               </ul>
             </div>
-            <div className='flex gap-2'>
-              <ShoppingCart /> {cartCount.length}
+            <Link to="/cart" className='flex gap-2'>
+              <ShoppingCart /> {cart.length}
               <Menu className='md:hidden block'/>
-            </div>
+            </Link>
         </div>
     </>
   )

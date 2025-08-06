@@ -7,6 +7,7 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const productRoutes = require("./routes/productRoutes");
 const feedbackRoutes = require("./routes/feedbackRoutes");
 const authRoutes = require("./routes/authRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 connectDB();
 
@@ -17,6 +18,7 @@ app.use('/category', categoryRoutes);
 app.use('/product', productRoutes);
 app.use("/feedback", feedbackRoutes);
 app.use("/auth", authRoutes);
+app.use("/order", orderRoutes);
 
 
 app.listen(2000, () => {

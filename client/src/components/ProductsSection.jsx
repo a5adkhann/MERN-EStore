@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { cartContext } from "./CartContext";
 
 const ProductsSection = () => {
   const [products, setProducts] = useState([]);
   const [categoriesDropdown, setCategoriesDropdown] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
-  const [cart, setCart] = useState([]);
+  const {addToCart} = useContext(cartContext);
 
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
-    console.log("🛒 Cart updated:", cart);
-  }, [cart]);
 
   const fetchProducts = async () => {
     try {
@@ -56,26 +43,6 @@ const ProductsSection = () => {
     } catch (err) {
       console.log("Error filtering by category:", err);
     }
-  };
-
-  const handleAddToCart = (product) => {
-    console.log("Add to Cart Clicked:", product);
-
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart];
-      const existingIndex = updatedCart.findIndex((item) => item._id === product._id);
-
-      if (existingIndex !== -1) {
-        updatedCart[existingIndex].quantity += 1;
-      } else {
-        updatedCart.push({ ...product, quantity: 1 });
-      }
-
-      console.log("✅ Updated Cart inside setCart:", updatedCart);
-
-      toast.success(`${product.product_name} added to cart`);
-      return updatedCart;
-    });
   };
 
 
@@ -134,8 +101,7 @@ const ProductsSection = () => {
                   </p>
                 </div>
                 <div className="cart-btn">
-                  <button
-                    onClick={() => handleAddToCart(product)}
+                  <button onClick={() => addToCart(product)}
                     className="px-3 py-2 hover:-translate-y-1 hover:text-red-600 transition-all cursor-pointer duration-300 ease-in-out"
                   >
                     <ShoppingBag />
