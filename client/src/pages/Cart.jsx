@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { cartContext } from "../components/CartContext";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
   const { cart, setCart } = useContext(cartContext);
+  const navigate = useNavigate();
 
   const handleOrderSubmission = async () => {
     try {
@@ -18,6 +21,10 @@ const Cart = () => {
       console.log(response);
 
       setCart([]);
+
+      toast.success("Order placed successfully");
+      navigate("/");
+
     } catch (err) {
       console.log(err);
     }
