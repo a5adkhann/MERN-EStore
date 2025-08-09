@@ -17,7 +17,9 @@ const Navbar = () => {
             <div className='flex gap-2'>
               <i className="ri-webhook-line text-red-600"></i>
               <span className='font-bold'>
-                <img src="./logo.png" className='w-[40px] invert-25'/>
+                <Link to="/">
+                  <img src="./logo.png" className='w-[40px] invert-25'/>
+                </Link>
               </span>
             </div>
             <div className='hidden md:block'>

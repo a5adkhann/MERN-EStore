@@ -24,7 +24,7 @@ const RegisterForm = () => {
     if(fileInputRef.current){
       fileInputRef.current.value = "";
     }
-    const response = await axios.post("http://localhost:5173/", formData);
+    const response = await axios.post("http://localhost:2000/auth", formData);
     console.log(response)
     }
     catch(err){
@@ -34,7 +34,7 @@ const RegisterForm = () => {
   return (
     <>
       <BG />
-        <div className='registeration-form w-[30%] border border-gray-300 shadow-xl mx-auto mt-[10%] p-10 bg-white'>
+        <div className='registeration-form md:w-[30%] w-[90%] border border-gray-300 shadow-xl mx-auto mt-[10%] p-10 bg-white'>
           <h1 className='font-bold uppercase text-2xl text-center mb-3 underline underline-offset-8'>Register</h1>
           <form onSubmit={handleRegisteration} encType='multipart/form-data'>
             <input type="text" placeholder='Full Name' className='w-[100%] border-gray-300 border p-2 mb-4 focus:outline-0 focus:border-blue-300'

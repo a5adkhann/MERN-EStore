@@ -6,7 +6,7 @@ const LoginForm = () => {
   return (
     <>
         <BG/>
-        <div className='login-form w-[30%] border border-gray-300 shadow-md mx-auto mt-[10%] p-10 bg-white'>
+        <div className='login-form md:w-[30%] w-[90%] border border-gray-300 shadow-md mx-auto mt-[10%] p-10 bg-white'>
           <h1 className='font-bold uppercase text-2xl text-center mb-3 underline underline-offset-8 underline-red'>Login</h1>
           <form>
               <input type="email" placeholder='Email Address' className='w-[100%] border-gray-300 border p-2 mb-4 focus:outline-0 focus:border-blue-300'/>
