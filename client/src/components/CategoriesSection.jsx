@@ -94,7 +94,7 @@ const CategoriesSection = () => {
          <p className='px-10 font-bold text-3xl mt-20 text-center'>Categories</p>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: "45px", flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
             {categories.map((category) => (
-              <Link to={`/categories/${category._id}`} data-aos="fade-left" data-aos-delay="200"     data-aos-duration="1000" data-aos-easing="ease-in-out">
+              <Link to={`/categories/${category._id}`} data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out">
               <ImageButton
                 focusRipple
                 key={category.id}

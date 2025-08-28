@@ -1,12 +1,14 @@
 import axios from "axios";
 import { ShoppingBasket } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { cartContext } from "./CartContext";
 
 const ProductDetailSection = () => {
   const [thisProduct, setThisProduct] = useState([]);
   const { productId } = useParams();
   const navigate = useNavigate();
+  const {addToCart} = useContext(cartContext);
 
   const fetchProductDetails = async () => {
     try {
@@ -58,7 +60,7 @@ const ProductDetailSection = () => {
                   </button>
                 )}
               </div>
-              <button className="flex text-white w-[100%] px-[40%] gap-2 py-2 rounded-full items-center bg-gradient-to-br from-[#000000] to-[#060a49]">
+              <button onClick={() => addToCart(product)} className="flex text-white text-center w-[100%] gap-2 py-2 rounded-full items-center justify-center bg-gradient-to-br from-[#000000] to-[#060a49]">
                 ADD TO CART <ShoppingBasket />
               </button>
             </div>

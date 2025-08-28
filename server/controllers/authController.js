@@ -21,7 +21,7 @@ const authController = {
             const { email, password } = request.body;
             const registeredUser = await Registeration.findOne({email: email});
             if(registeredUser){
-                const isMatch = await bcrypt.compare(registeredUser.password, password);
+                const isMatch = await bcrypt.compare(password, registeredUser.password);
                 if(isMatch){
                     response.status(200).send({message: "Logged in Successfully", registeredUser});
                 }

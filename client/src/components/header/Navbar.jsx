@@ -18,7 +18,7 @@ const Navbar = () => {
               <i className="ri-webhook-line text-red-600"></i>
               <span className='font-bold'>
                 <Link to="/">
-                  <img src="./logo.png" className='w-[40px] invert-25'/>
+                  <img src="./logo.png" className='w-[35px]'/>
                 </Link>
               </span>
             </div>

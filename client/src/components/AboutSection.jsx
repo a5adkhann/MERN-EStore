@@ -3,7 +3,7 @@ import React from 'react'
 const AboutSection = () => {
     return (
         <>
-            <div className='px-10' data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out">
+            <div className='px-10' data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-in-out">
                 <p className='font-bold text-3xl mb-6 text-center'>About Us</p>
             </div>
             <div className="about-section grid md:grid-cols-2 grid-cols-1 place-items-center gap-10 px-10 pb-20" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out">

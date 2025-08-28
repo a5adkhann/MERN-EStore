@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import BG from './BG'
 import axios from 'axios'
-
+import toast, { Toaster } from 'react-hot-toast';
 const RegisterForm = () => {
 
   const [name, setName] = useState("");
@@ -21,11 +21,17 @@ const RegisterForm = () => {
     formData.append("password", password);
     formData.append("image", image);
 
+    const response = await axios.post("http://localhost:2000/auth/register", formData);
+    console.log(response);
+    toast.success(response.data.message);
+    setName("");
+    setEmail("");
+    setPassword("");
+
     if(fileInputRef.current){
       fileInputRef.current.value = "";
     }
-    const response = await axios.post("http://localhost:2000/auth", formData);
-    console.log(response)
+    
     }
     catch(err){
       console.log(err);
@@ -58,7 +64,10 @@ const RegisterForm = () => {
             <button className='w-[100%] border border-gray-300 hover:bg-black hover:text-white py-2 transition-all ease-in-out duration-300 uppercase'>Create Account</button>
           </form>
         </div>
-
+        <Toaster
+                  position="top-center"
+                  reverseOrder={false}
+                />
       </>
       )
 }
